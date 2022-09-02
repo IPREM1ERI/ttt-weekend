@@ -1,5 +1,5 @@
 /*-------------------------------- Constants --------------------------------*/
-const winningCombos = [[1,1,1], [-1,-1,-1]]
+// const winningCombos = [[board[0],board[1],board[2]], [board[3],board[4],board[5]],[board[6],board[7],board[8]],[board[0],board[3],board[6]],[board[1],board[4],board[7]],[board[2],board[5],board[8]],[board[0],board[4],board[8]],[board[2],board[4],board[6]]]
 
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -19,20 +19,24 @@ const messageEls = document.querySelector("#message")
 /*-------------------------------- Functions --------------------------------*/
 init()
 function init() {
-board = [null,null,null,null,null,null,null,null,null]
+board = [1,1,null,null,-1,null,-1,null,null]
 turn = 1
 winner = null
 render()
 }
 function render() {
-  board.forEach((boardSpace, idx) => {
-    boardSpace = squareEls[idx]
-    console.log(boardSpace)
-    
+  board.forEach((space, idx) => {
+    const playerChoice = squareEls[idx]
+    if (space === null) {
+      return playerChoice.textContent = ''
+    }
+    return space === 1 ? playerChoice.textContent = 'x' : playerChoice.textContent = 'o'
   })
-  // if (winner === null) {
-  //   `It is player ${turn} turn`
-  // }
-  
+  renderWin()
+}
+
+function renderWin () {
+  if (winner === null) return `It is player ${turn} turn`
+  return winner === 'T' ?`This game is a Tie`
 }
 
