@@ -17,16 +17,29 @@ let winner, turn, board
 
 /*------------------------ Cached Element References ------------------------*/
 
-const squareEls = document.querySelectorAll("div.board-space")
+const squareEls = document.querySelectorAll(".board-spaces")
 const messageEls = document.querySelector("#message")
-
+const parentEl = document.querySelector(".board")
 /*----------------------------- Event Listeners -----------------------------*/
 
-for (const space of spaces) {
-  space.addEventListener('click', function(evt) {
-    handleClick()
-  })
+// for (const space of spaces) {
+//   space.addEventListener('click', function(evt) {
+//     handleClick()
+//   })
+// }
+
+console.log(parentEl)
+parentEl.addEventListener('click', handleClick)
+
+
+
+function handleClick (evt) {
+  const sqIdx = evt.target
+  sqIdx.slice()
+  
+  console.log(sqIdx)
 }
+
 
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -52,7 +65,6 @@ function renderWin () {
   return winner === 'T' ? messageEls.textContent = `This game is a Tie` : messageEls.textContent = `Player ${winner} Wins`
 }
 
-function handleClick (evt) {
 
-}
+//console.log(handleClick())
 
