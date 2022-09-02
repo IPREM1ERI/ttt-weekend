@@ -1,5 +1,14 @@
 /*-------------------------------- Constants --------------------------------*/
-// const winningCombos = [[board[0],board[1],board[2]], [board[3],board[4],board[5]],[board[6],board[7],board[8]],[board[0],board[3],board[6]],[board[1],board[4],board[7]],[board[2],board[5],board[8]],[board[0],board[4],board[8]],[board[2],board[4],board[6]]]
+// const winningCombos = [
+// [board[0],board[1],board[2]], 
+// [board[3],board[4],board[5]],
+// [board[6],board[7],board[8]],
+// [board[0],board[3],board[6]],
+// [board[1],board[4],board[7]],
+// [board[2],board[5],board[8]],
+// [board[0],board[4],board[8]],
+// [board[2],board[4],board[6]]
+// ]
 
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -9,17 +18,20 @@ let winner, turn, board
 /*------------------------ Cached Element References ------------------------*/
 
 const squareEls = document.querySelectorAll("div.board-space")
-//console.log(squareEls)
 const messageEls = document.querySelector("#message")
 
 /*----------------------------- Event Listeners -----------------------------*/
 
-
+for (const space of spaces) {
+  space.addEventListener('click', function(evt) {
+    handleClick()
+  })
+}
 
 /*-------------------------------- Functions --------------------------------*/
 init()
 function init() {
-board = [1,1,null,null,-1,null,-1,null,null]
+board = [null,null,null,null,null,null,null,null,null]
 turn = 1
 winner = null
 render()
@@ -36,7 +48,11 @@ function render() {
 }
 
 function renderWin () {
-  if (winner === null) return `It is player ${turn} turn`
-  return winner === 'T' ?`This game is a Tie`
+  if (winner === null) return messageEls.textContent = `It is player ${turn} turn`
+  return winner === 'T' ? messageEls.textContent = `This game is a Tie` : messageEls.textContent = `Player ${winner} Wins`
+}
+
+function handleClick (evt) {
+
 }
 
