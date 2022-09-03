@@ -22,23 +22,12 @@ const messageEls = document.querySelector("#message")
 const parentEl = document.querySelector(".board")
 /*----------------------------- Event Listeners -----------------------------*/
 
-// for (const space of spaces) {
-//   space.addEventListener('click', function(evt) {
-//     handleClick()
-//   })
-// }
 
-console.log(parentEl)
 parentEl.addEventListener('click', handleClick)
+console.log(parentEl)
 
 
 
-function handleClick (evt) {
-  const sqIdx = evt.target
-  sqIdx.slice()
-  
-  console.log(sqIdx)
-}
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -65,6 +54,18 @@ function renderWin () {
   return winner === 'T' ? messageEls.textContent = `This game is a Tie` : messageEls.textContent = `Player ${winner} Wins`
 }
 
+function handleClick (evt) {
+  const sqIdx = parseInt(evt.target.id[2])
+  if (winner != null) return
+  else if (board[sqIdx] != null) return "space taken"
+  else {  
+    board[sqIdx] = turn;
+    turn = turn * (-1)
+    render()
+    getWinner()
+  }
+}
 
-//console.log(handleClick())
+//function getWinner ()
+
 
