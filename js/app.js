@@ -1,18 +1,20 @@
 /*-------------------------------- Constants --------------------------------*/
-// const winningCombos = [
-// [board[0],board[1],board[2]], 
-// [board[3],board[4],board[5]],
-// [board[6],board[7],board[8]],
-// [board[0],board[3],board[6]],
-// [board[1],board[4],board[7]],
-// [board[2],board[5],board[8]],
-// [board[0],board[4],board[8]],
-// [board[2],board[4],board[6]]
-// ]
+
+
+const winningCombos = [
+[0,1,2], 
+[3,4,5],
+[6,7,8],
+[0,3,6],
+[1,4,7],
+[2,5,8],
+[0,4,8],
+[2,4,6]
+]
 
 
 /*---------------------------- Variables (state) ----------------------------*/
-let winner, turn, board
+let winner, turn, board;
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -32,6 +34,7 @@ console.log(parentEl)
 
 /*-------------------------------- Functions --------------------------------*/
 init()
+
 function init() {
 board = [null,null,null,null,null,null,null,null,null]
 turn = 1
@@ -49,7 +52,7 @@ function render() {
     if (space === null) {
       return playerChoice.textContent = ''
     }
-    return space === 1 ? playerChoice.textContent = 'x' : playerChoice.textContent = 'o'
+    return space === 1 ? playerChoice.textContent = 'X' : playerChoice.textContent = 'O'
     
   })
   renderWin()
@@ -67,16 +70,25 @@ function handleClick (evt) {
   else {  
     board[sqIdx] = turn;
     turn = turn * (-1)
-    console.log('board status',board)
+    //console.log('board status',board)
     render()
     getWinner()
   }
 }
-
-// function getWinner () {
-//   board.forEach((space, idx) {
-    
-//   })
-// }
+//board[winningCombos[0][1]] === -1
+function getWinner () {
+  winningCombos.forEach((combo) => {
+    let sum = 0
+    combo.forEach(idx =>{
+      sum += board[idx]
+    }) 
+    if (sum === 3) {
+      return winner = 1
+    } else if (sum === -3) {
+      return winner = -1
+    }
+    if (winner)
+  })
+}
 
 
