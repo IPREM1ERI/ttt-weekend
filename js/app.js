@@ -17,7 +17,7 @@ let winner, turn, board
 
 /*------------------------ Cached Element References ------------------------*/
 
-const squareEls = document.querySelectorAll(".board-spaces")
+const squareEls = document.querySelectorAll(".board-space")
 const messageEls = document.querySelector("#message")
 const parentEl = document.querySelector(".board")
 /*----------------------------- Event Listeners -----------------------------*/
@@ -40,11 +40,17 @@ render()
 }
 function render() {
   board.forEach((space, idx) => {
-    const playerChoice = squareEls[idx]
+    let playerChoice = squareEls[idx]
+    // console.log("here is space  ", space)
+    // console.log('here is playerchoice', playerChoice)
+    // console.log("this is squareEls", squareEls)
+    // console.log("this  is idx", idx)
+
     if (space === null) {
       return playerChoice.textContent = ''
     }
     return space === 1 ? playerChoice.textContent = 'x' : playerChoice.textContent = 'o'
+    
   })
   renderWin()
 }
@@ -61,11 +67,16 @@ function handleClick (evt) {
   else {  
     board[sqIdx] = turn;
     turn = turn * (-1)
+    console.log('board status',board)
     render()
     getWinner()
   }
 }
 
-//function getWinner ()
+// function getWinner () {
+//   board.forEach((space, idx) {
+    
+//   })
+// }
 
 
