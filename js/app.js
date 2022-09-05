@@ -59,7 +59,7 @@ function render() {
   if (!winner) {
     messageEls.textContent = `Your turn player ${turn === 1 ? "X" : "O"}`
   } else if (winner === "T") {
-    messageEls.textContent = "Game is a Tie"
+    messageEls.textContent = "The plot of Wargames"
   } else {
     messageEls.textContent = `Winner!! Player ${winner === 1 ? "X" : "O"}`
   }
