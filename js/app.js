@@ -26,7 +26,7 @@ const resetBtnEl = document.querySelector("#reset-button")
 /*----------------------------- Event Listeners -----------------------------*/
 
 
-parentEl.addEventListener('click', handleClick)
+parentEl.addEventListener('click', handleClick)//this uses the bubbling method
 resetBtnEl.addEventListener('click', init)
 
 
@@ -59,7 +59,7 @@ function render() {
   if (!winner) {
     messageEls.textContent = `Your turn player ${turn === 1 ? "X" : "O"}`
   } else if (winner === "T") {
-    messageEls.textContent = "The plot of Wargames"
+    messageEls.textContent = "Game is a tie, The plot of Wargames"
   } else {
     messageEls.textContent = `Winner!! Player ${winner === 1 ? "X" : "O"}`
   }
